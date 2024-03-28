@@ -1,17 +1,12 @@
 import { useState } from 'react';
 import './App.css';
-import { createBoard } from './features/boards/createBoard';
 import { TLight } from './features/lights/light.type';
 import { Board } from './features/boards/board';
 import { Title } from './features/title/title';
+import { initializeBoard } from './features/boards/initializeBoard';
 
 export const App = () => {
-  const init = () => {
-    let board = createBoard();
-    return board;
-  };
-
-  const [lights] = useState<TLight[]>(init());
+  const [lights] = useState<TLight[]>(initializeBoard());
 
   return (
     <div className="app">
