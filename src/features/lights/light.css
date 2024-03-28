@@ -1,0 +1,56 @@
+.lights {
+    border: none;
+    border-radius: 50%;
+    height: var(--light-size);
+    margin: var(--light-size);
+    width: var(--light-size);
+}
+
+.blue {
+    background-color: var(--blue);
+    box-shadow:
+        0 0 var(--light-size) var(--blue),
+        0 0 calc(var(--light-size) * 2) var(--blue);
+}
+
+.green {
+    background-color: var(--green);
+    box-shadow:
+        0 0 var(--light-size) var(--green),
+        0 0 calc(var(--light-size) * 2) var(--green);
+}
+
+.orange {
+    background-color: var(--orange);
+    box-shadow:
+        0 0 var(--light-size) var(--orange),
+        0 0 calc(var(--light-size) * 2) var(--orange);
+}
+
+.purple {
+    background-color: var(--purple);
+    box-shadow:
+        0 0 var(--light-size) var(--purple),
+        0 0 calc(var(--light-size) * 2) var(--purple);
+}
+
+.red {
+    background-color: var(--red);
+    box-shadow:
+        0 0 var(--light-size) var(--red),
+        0 0 calc(var(--light-size) * 2) var(--red);
+}
+
+.yellow {
+    background-color: var(--yellow);
+    box-shadow:
+        0 0 var(--light-size) var(--yellow),
+        0 0 calc(var(--light-size) * 2) var(--yellow);
+}
+
+/* 
+.image {
+    width: var(--light-size);
+    height: var(--light-size);
+    background-size: cover;
+} */

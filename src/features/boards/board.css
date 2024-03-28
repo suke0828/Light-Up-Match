@@ -1,0 +1,10 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cell), 1fr);
+  grid-template-rows: repeat(var(--grid-cell), 1fr);
+  border-radius: 10px;
+  box-shadow:
+    0 0 calc(var(--grid-size) * .1) #000,
+    0 0 calc(var(--grid-size) * .5) #fff;
+  padding: 2px;
+}

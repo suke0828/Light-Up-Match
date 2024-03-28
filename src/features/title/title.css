@@ -1,0 +1,33 @@
+.title {
+  font-family: "Monoton", cursive;
+  font-size: calc(var(--light-size) * 2);
+  letter-spacing: 2px;
+  margin-bottom: var(--light-size);
+}
+
+.title-blue {
+  --green: #23f4ab;
+  color: var(--green);
+  text-shadow:
+    0 0 calc(var(--light-size)) var(--green),
+    0 0 calc(var(--light-size) * 3) var(--green),
+    0 0 calc(var(--light-size) * 6) var(--green);
+}
+
+.title-white {
+  color: #fff;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 calc(var(--light-size)) #fff,
+      0 0 calc(var(--light-size) * 3) #fff,
+      0 0 calc(var(--light-size) * 6) #fff;
+  }
+
+  20%, 24%, 55% {
+    text-shadow: none
+  }
+}

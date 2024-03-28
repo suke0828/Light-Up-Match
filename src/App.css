@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+:root {
+  --grid-size: 80px;
+  --grid-cell: 8;
+  --light-size: 25px;
+  --blue: #12e7e7;
+  --green: #00fb19;
+  --orange: #fea501;
+  --purple: #b000fb;
+  --red: #ff0000;
+  --yellow: #ffff00;
+}
+
+body,
+html {
+  background-color: rgb(33, 33, 33);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
