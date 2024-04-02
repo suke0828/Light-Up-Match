@@ -6,7 +6,7 @@ import { Title } from './features/title/title';
 import { initializeBoard } from './features/boards/initializeBoard';
 
 export const App = () => {
-  const [lights] = useState<TLight[]>(initializeBoard());
+  const [lights] = useState<TLight[]>(initializeBoard);
 
   return (
     <div className="app">
