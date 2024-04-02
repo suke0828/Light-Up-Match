@@ -19,7 +19,7 @@ export const checkRowChains = (rowItems: TLight[], chainLength: number) => {
         const chainIndices = Array.from({ length: chainLength }, (_, j) => i + j);
 
         // board上の横chainLengthマスの範囲のアイテムを配列に入れる(5chainの場合, ['orange', 'blue', 'red', 'yellow', 'red'])
-        const checkColsChains = chainIndices.map((index) => rowItems[index]?.color);
+        const checkColsChains = chainIndices.map((index) => rowItems[index].color);
 
         // 配列内の最初の要素の色を基準に配列内の他の要素と色を比較する
         // ['green', 'green', 'green', 'green', 'green'] = true
