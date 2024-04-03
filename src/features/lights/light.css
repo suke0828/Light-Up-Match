@@ -2,7 +2,6 @@
     border: none;
     border-radius: 50%;
     height: var(--light-size);
-    margin: var(--light-size);
     width: var(--light-size);
 }
 
@@ -35,7 +34,8 @@
 }
 
 .red {
-    background-color: var(--red);
+    background-color: rgba(255, 0, 0, 0.96);
+    ;
     box-shadow:
         0 0 var(--light-size) var(--red),
         0 0 calc(var(--light-size) * 2) var(--red);
