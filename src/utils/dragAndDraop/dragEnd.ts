@@ -1,3 +1,5 @@
+import { checkColumnChains } from '@/features/chains/checkColumnChains';
+import { checkRowChains } from '@/features/chains/checkRowChains';
 import { TLight } from '@/features/lights/light.type';
 
 export const handleDragEnd = (
@@ -6,12 +8,15 @@ export const handleDragEnd = (
   dragLight: number,
   dropLight: number
 ) => {
-  const newLights = [...lights];
+  let newLights = [...lights];
   let temp = newLights[dragLight].color;
 
   // swap light color
   newLights[dragLight].color = newLights[dropLight].color;
   newLights[dropLight].color = temp;
+
+  newLights = checkColumnChains(newLights);
+  newLights = checkRowChains(newLights);
 
   return setState(newLights);
 };
