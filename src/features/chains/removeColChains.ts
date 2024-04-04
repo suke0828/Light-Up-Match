@@ -1,7 +1,7 @@
 import { BOARD_WIDTH } from '@/types/constants';
 import { TLight } from '../lights/light.type';
 
-export const checkColChains = (colItems: TLight[], chainLength: number) => {
+export const removeColChains = (colItems: TLight[], chainLength: number) => {
   // boardで縦一列を上からカウントできる範囲を定義
   const fixedCellIndex = 1;
   const checkRange = BOARD_WIDTH - (chainLength - 1);

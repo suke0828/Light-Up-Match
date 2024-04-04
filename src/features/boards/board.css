@@ -8,7 +8,3 @@
     0 0 calc(var(--grid-size) * .5) #fff;
   padding: 2px;
 }
-
-.board .drag-item {
-  margin: var(--light-size);
-}

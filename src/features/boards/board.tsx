@@ -7,12 +7,16 @@ import { handlePreventDefaultBehavior } from '@/utils/dragAndDraop/preventDefaul
 import { handleDrop } from '@/utils/dragAndDraop/drop';
 import { handleDragEnd } from '@/utils/dragAndDraop/dragEnd';
 import { initializeBoard } from './initializeBoard';
+import { chainAnimation } from '../chains/chainAnimation';
 
 export const Board = () => {
   const [lights, setLights] = useState<TLight[]>(initializeBoard);
   const notHaveAnythingDefaultItems = -1;
   const [dragging, setDragging] = useState<number>(notHaveAnythingDefaultItems);
   const [dropping, setDropping] = useState<number>(notHaveAnythingDefaultItems);
+
+  // チェインした時の動作を遅延させる
+  chainAnimation(lights, setLights);
 
   return (
     <div className="board">
