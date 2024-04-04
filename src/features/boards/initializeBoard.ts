@@ -1,9 +1,9 @@
 import { TLight } from '../lights/light.type';
 import { createBoard } from './createBoard';
-import { removeChains } from './removeChains';
+import { chainsBehavior } from '../chains/chainsBehavior';
 
 export const initializeBoard = (): TLight[] => {
   let board = createBoard();
-  board = removeChains(board);
+  board = chainsBehavior(board);
   return board;
 };
