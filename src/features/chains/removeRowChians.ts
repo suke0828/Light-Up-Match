@@ -1,7 +1,7 @@
 import { BOARD_WIDTH } from '@/types/constants';
 import { TLight } from '../lights/light.type';
 
-export const checkRowChains = (rowItems: TLight[], chainLength: number) => {
+export const removeRowChains = (rowItems: TLight[], chainLength: number) => {
   // boardで横一行を上からカウントできる範囲を定義
   const rangeCheckBoard = BOARD_WIDTH * BOARD_WIDTH - chainLength;
 
