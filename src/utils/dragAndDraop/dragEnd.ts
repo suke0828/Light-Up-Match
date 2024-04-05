@@ -1,22 +1,59 @@
 import { checkColumnChains } from '@/features/chains/checkColumnChains';
 import { checkRowChains } from '@/features/chains/checkRowChains';
 import { TLight } from '@/features/lights/light.type';
+import { BOARD_WIDTH } from '@/types/constants';
 
 export const handleDragEnd = (
   lights: TLight[],
   setState: React.Dispatch<React.SetStateAction<TLight[]>>,
-  dragLight: number,
-  dropLight: number
+  dragIndex: number,
+  dropIndex: number
 ) => {
-  let newLights = [...lights];
-  let temp = newLights[dragLight].color;
+  // dragしたcellの上下左右のcellを取得する
+  const topCell = dragIndex - BOARD_WIDTH;
+  const rightCell = dragIndex + 1;
+  const bottomCell = dragIndex + BOARD_WIDTH;
+  const leftCell = dragIndex - 1;
+
+  // dropできるcellを決める補助関数
+  const dropCell = (dragCell: number) => {
+    return dropIndex === dragCell;
+  };
+
+  // 上下左右の隣接しているcellのみにdrag and dropできる
+  const neighborCell =
+    dropCell(topCell) || dropCell(rightCell) || dropCell(bottomCell) || dropCell(leftCell);
+
+  // 左右の境界をまたがってのdrag and dropを無効にする
+  const invalidRightEdges = dragIndex % BOARD_WIDTH === BOARD_WIDTH - 1 && rightCell === dropIndex;
+  const invalidLeftEdges = dragIndex % BOARD_WIDTH === 0 && leftCell === dropIndex;
+
+  // drag and dropが可能な範囲の有効な条件をまとめる
+  const valid = neighborCell && !invalidRightEdges && !invalidLeftEdges;
 
   // swap light color
-  newLights[dragLight].color = newLights[dropLight].color;
-  newLights[dropLight].color = temp;
+  const swapLightColor = (lights: TLight[]) => {
+    let temp = lights[dragIndex].color;
 
-  newLights = checkColumnChains(newLights);
-  newLights = checkRowChains(newLights);
+    lights[dragIndex].color = lights[dropIndex].color;
+    lights[dropIndex].color = temp;
+  };
 
-  return setState(newLights);
+  // chainできる箇所だけdrag and dropできる
+  if (valid) {
+    let newLights = [...lights];
+
+    swapLightColor(newLights);
+
+    // chainできるものをcheckし、削除する
+    newLights = checkColumnChains(newLights);
+    newLights = checkRowChains(newLights);
+
+    // chainが発生しない場合はswapは無効にする
+    if (newLights.filter((light) => light.color === '').length === 0) {
+      swapLightColor(newLights); // もう一度swapして元に戻す
+    } else {
+      return setState(newLights);
+    }
+  }
 };
