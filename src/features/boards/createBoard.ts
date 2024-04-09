@@ -4,9 +4,11 @@ import { TLight } from '../lights/light.type';
 export const createBoard = (): TLight[] => {
   const board = Array(BOARD_WIDTH * BOARD_WIDTH)
     .fill(null)
-    .map(() => ({
+    .map((_, index) => ({
       // lightをランダムに生成
       color: LIGHTS_COLOR[Math.floor(Math.random() * LIGHTS_COLOR.length)],
+      chain: false,
+      idx: index,
     }));
 
   return board;
