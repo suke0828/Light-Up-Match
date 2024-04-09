@@ -28,7 +28,8 @@ const swapEmptyBottomLights = (lights: TLight[]) => {
 };
 
 export const moveDown = (currentLights: TLight[]): TLight[] => {
-  let nextLights = currentLights;
+  let nextLights = [...currentLights];
+
   nextLights = lightsGenerateTopRowisEmpty(nextLights);
   nextLights = swapEmptyBottomLights(nextLights);
 
