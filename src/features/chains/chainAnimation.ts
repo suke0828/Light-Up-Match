@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { checkColumnChains } from './checkColumnChains';
-import { checkRowChains } from './checkRowChains';
+import { removeChains } from './removeChains/removeChains';
 import { moveDown } from './moveDown';
 import { TLight } from '../lights/light.type';
 
@@ -13,22 +12,25 @@ export const chainAnimation = (
   useEffect(() => {
     setTimeout(() => {
       let nextLights = [...lights];
-      // チェインしていたら削除する
-      nextLights = checkColumnChains(nextLights);
-      nextLights = checkRowChains(nextLights);
 
-      const isSamePrevAndCurrentLights = lights.every(
-        (light, i) => light.color === nextLights[i].color && light.color !== ''
+      // board上がlightで埋まるの待ってからチェインしているものを削除する
+      if (nextLights.every((light) => lights[light.idx].color !== '' && light.color !== '')) {
+        nextLights = removeChains(nextLights);
+      }
+
+      const isSamePrevAndCurrentLights = nextLights.every(
+        (light) => light.color === lights[light.idx].color && light.color !== ''
       );
+
+      // ライトが下に落ちて、新しいもの生成する
+      moveDown(nextLights);
 
       // 現在のboardと前のboardのlightの配置が同じなら終了する
       if (isSamePrevAndCurrentLights) {
-        return;
+        return nextLights;
+      } else {
+        setState(nextLights);
       }
-
-      // ライトが下に落ちて、新しいもの生成する
-      nextLights = moveDown(nextLights);
-      setState(nextLights);
     }, delayMilliSeconds);
   }, [lights]);
 };

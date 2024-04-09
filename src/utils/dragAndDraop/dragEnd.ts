@@ -1,5 +1,4 @@
-import { checkColumnChains } from '@/features/chains/checkColumnChains';
-import { checkRowChains } from '@/features/chains/checkRowChains';
+import { removeChains } from '@/features/chains/removeChains/removeChains';
 import { TLight } from '@/features/lights/light.type';
 import { BOARD_WIDTH } from '@/types/constants';
 
@@ -46,8 +45,7 @@ export const handleDragEnd = (
     swapLightColor(newLights);
 
     // chainできるものをcheckし、削除する
-    newLights = checkColumnChains(newLights);
-    newLights = checkRowChains(newLights);
+    newLights = removeChains(newLights);
 
     // chainが発生しない場合はswapは無効にする
     if (newLights.filter((light) => light.color === '').length === 0) {
