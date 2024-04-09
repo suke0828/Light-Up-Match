@@ -20,11 +20,11 @@ export const Board = () => {
 
   return (
     <div className="board">
-      {lights.map((item, i) => (
+      {lights.map((item) => (
         <div
           className="drag-item"
-          key={i}
-          data-id={i}
+          key={item.idx}
+          data-id={item.idx}
           draggable={true}
           onDragStart={(e) => handleDragStart(e, setDragging)}
           onDragEnter={(e) => handlePreventDefaultBehavior(e)} // デフォルトの動作を無効にする
@@ -33,7 +33,7 @@ export const Board = () => {
           onDrop={(e) => handleDrop(e, setDropping)}
           onDragEnd={() => handleDragEnd(lights, setLights, dragging, dropping)}
         >
-          <Lights light={item} index={i} />
+          <Lights light={item} />
         </div>
       ))}
     </div>
