@@ -8,3 +8,72 @@
     0 0 calc(var(--grid-size) * .5) #fff;
   padding: 2px;
 }
+
+.bottomChainable {
+  animation: upMoving 1s ease-in-out infinite alternate;
+}
+
+.leftChainable {
+  animation: rightMoving 1s ease-in-out infinite alternate;
+}
+
+.rightChainable {
+  animation: leftMoving 1s ease-in-out infinite alternate;
+}
+
+.topChainable {
+  animation: downMoving 1s ease-in-out infinite alternate;
+}
+
+
+
+
+
+@keyframes downMoving {
+  0% {
+    position: relative;
+    top: 0;
+  }
+
+  100% {
+    position: relative;
+    top: 20px;
+  }
+}
+
+
+@keyframes leftMoving {
+  0% {
+    position: relative;
+    right: 0;
+  }
+
+  100% {
+    position: relative;
+    right: 20px;
+  }
+}
+
+@keyframes rightMoving {
+  0% {
+    position: relative;
+    left: 0;
+  }
+
+  100% {
+    position: relative;
+    left: 20px;
+  }
+}
+
+@keyframes upMoving {
+  0% {
+    position: relative;
+    bottom: 0
+  }
+
+  100% {
+    position: relative;
+    bottom: 20px
+  }
+}
