@@ -8,6 +8,7 @@ import { handleDrop } from '@/utils/dragAndDraop/drop';
 import { handleDragEnd } from '@/utils/dragAndDraop/dragEnd';
 import { initializeBoard } from './initializeBoard';
 import { chainAnimation } from '../chains/chainAnimation';
+import { chainPossible } from '../chains/chainPossible';
 
 export const Board = () => {
   const [lights, setLights] = useState<TLight[]>(initializeBoard);
@@ -17,12 +18,19 @@ export const Board = () => {
 
   // チェインした時の動作を遅延させる
   chainAnimation(lights, setLights);
+  // チェイン可能なlightを見つける
+  chainPossible(lights, setLights);
 
   return (
     <div className="board">
       {lights.map((item) => (
         <div
-          className="drag-item"
+          className={`${item.topChainable ? 'topChainable' : ''} ${
+            item.rightChainable ? 'rightChainable' : ''
+          } ${item.bottomChainable ? 'bottomChainable' : ''} ${
+            item.leftChainable ? 'leftChainable' : ''
+          } 
+          `}
           key={item.idx}
           data-id={item.idx}
           draggable={true}
