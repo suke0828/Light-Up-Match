@@ -8,6 +8,10 @@ export const createBoard = (): TLight[] => {
       // lightをランダムに生成
       color: LIGHTS_COLOR[Math.floor(Math.random() * LIGHTS_COLOR.length)],
       chain: false,
+      topChainable: false,
+      rightChainable: false,
+      bottomChainable: false,
+      leftChainable: false,
       idx: index,
     }));
 
