@@ -44,6 +44,13 @@ export const handleDragEnd = (
 
     swapLightColor(newLights);
 
+    newLights.map((light) => {
+      (light.topChainable = false),
+        (light.rightChainable = false),
+        (light.bottomChainable = false),
+        (light.leftChainable = false);
+    });
+
     // chainできるものをcheckし、削除する
     newLights = removeChains(newLights);
 
