@@ -11,7 +11,7 @@ export const chainPossible = (
   setState: React.Dispatch<React.SetStateAction<TLight[]>>
 ) => {
   const newLights = [...lights];
-  const interval = 5000;
+  const interval = 10000;
 
   // チェイン可能なものをintervalミリ秒後にチェックする
   useEffect(() => {
