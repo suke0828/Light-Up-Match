@@ -4,6 +4,7 @@ import { checkRightSide } from './checkChainPossible/checkRightSide';
 import { checkLeftSide } from './checkChainPossible/checkLeftSide';
 import { checkAbove } from './checkChainPossible/checkAbove';
 import { checkBelow } from './checkChainPossible/checkBelow';
+import { checkCenter } from './checkChainPossible/checkCenter';
 
 export const chainPossible = (
   lights: TLight[],
@@ -19,6 +20,7 @@ export const chainPossible = (
       checkLeftSide(newLights, setState);
       checkAbove(newLights, setState);
       checkBelow(newLights, setState);
+      checkCenter(newLights, setState);
     }, interval);
 
     // lightsが更新される度にtimerのミリ秒を0にリセットする
