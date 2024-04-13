@@ -9,6 +9,7 @@ import { handleDragEnd } from '@/utils/dragAndDraop/dragEnd';
 import { initializeBoard } from './initializeBoard';
 import { chainAnimation } from '../chains/chainAnimation';
 import { chainPossible } from '../chains/chainPossible';
+import { resetBoard } from './resetBoard';
 
 export const Board = () => {
   const [lights, setLights] = useState<TLight[]>(initializeBoard);
@@ -20,6 +21,8 @@ export const Board = () => {
   chainAnimation(lights, setLights);
   // チェイン可能なlightを見つける
   chainPossible(lights, setLights);
+  // チェイン可能なものが無い場合はboardをリセットする
+  resetBoard(lights, setLights);
 
   return (
     <div className="board">
